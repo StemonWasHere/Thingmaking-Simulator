@@ -32,9 +32,6 @@ def dash(txt):
     print("things made per critical make: ", crincle)
     print("-x-x-x-x-x-x{Thingmaking Factory}x-x-x-x-x-x-")
 
-#cheat
-thing = 9
-
 #shop
 def shop():
     global thing
