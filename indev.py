@@ -2,10 +2,13 @@
 #it is not recommended to play on this version, please play the main.py instead
 
 from os import system, name
+import random
 
 thing = 0
 incle = 1 #(thing inclement)
 btm = 10 #big thing maker price
+crit = 20 #crit rate
+crincle = incle*3 #crit rate inclement
 
 #clear func
 def clr():
@@ -20,21 +23,28 @@ def clr():
 def dash(txt):
     global thing
     global incle
+    global crit
+    global crincle
     print("-x-x-x-x-x-x{Thingmaking Factory}x-x-x-x-x-x-")
     print(txt)
+    print("type 'make' to make thing")
     print("type 'shop' to access the shop")
-    print("Things made:", thing)
-    print("Things made per make:", incle)
+    print("things made:", thing)
+    print("things made per make:", incle)
+    print("crit rate: 1 in ",crit)
+    print("things made per critical make: ", crincle)
     print("-x-x-x-x-x-x{Thingmaking Factory}x-x-x-x-x-x-")
-    
+
 #cheat
 thing = 9
-    
+
 #shop
 def shop():
     global thing
     global btm
     global incle
+    global crit
+    global crincle
     clr()
     print("-x-x-x-x-x-x{Shop}x-x-x-x-x-x-")
     print("Things made:", thing)
@@ -56,29 +66,36 @@ def shop():
             print("you're too poor, come back with more things")
             shop()
     elif shopin.lower() == "exit":
-            dash("type 'make' to make thing")
+            dash("shop exited")
             make()
     else:
             print("unknown command")
             shop()
- 
-            
+
+
 #make func
 def make():
     global thing
     global incle
+    global crit
+    global crincle
     makein = input("make: ")
     if makein.lower() == "make":
-       thing = thing + incle
-       clr()
-       dash("type 'make' to make thing")
+       if random.randint(1, crit) == 1: #see if crit (1 in crit chances)
+           thing = thing + crincle
+           clr()
+           dash(f"critical hit! you made {crincle} thing(s)")
+       else:
+           thing = thing + incle
+           clr()
+           dash(f"you made {incle} thing(s)")
        make()
     elif makein.lower() == "shop":
         shop()
     else:
        clr()
-       dash("unknown command, type 'make' to make thing")
+       dash("unknown command")
        make()
 
-dash("type 'make' to make thing")
+dash(":)")
 make()
