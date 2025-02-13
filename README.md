@@ -1,6 +1,7 @@
 # Thingmaking-Simulator
 A text-based idle game written in python
-> current version: 0.0.1
+> current main version: 0.0.2
+> current indev version: 0.0.2i
 
 ### What?
 > Thingmaking Simulator (ThSi) is a text-based idle game written in python
